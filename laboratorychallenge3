@@ -1,0 +1,28 @@
+// Third Programming Activity
+// DAWN JAZHERE P. AGUARES
+// September 12, 2024
+
+import java.util.Scanner;
+public class LaboratoryChallenge3 {
+        public static void main (String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        //Input
+        double subtotal = 0;
+        
+        for (int i = 1;i <= 3; i++){
+            System.out.println("Enter the price of item: " + i);
+            
+        double price = scanner.nextDouble();
+            System.out.println("Enter the price of item: " + i);
+            
+        int quantity = scanner.nextInt();
+            subtotal += price * quantity;
+            
+        double discount = subtotal * 0.05; //5% discount
+            double discountedAmount = subtotal - discount;
+                double tax = discountedAmount * 0.12; //12% sales tax\
+                    double finalTotal = discountedAmount + tax;
+   
+        }
+    }
