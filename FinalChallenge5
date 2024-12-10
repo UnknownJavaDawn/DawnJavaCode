@@ -1,0 +1,92 @@
+import javax.swing.JOptionPane;
+
+class InvalidQuantityException extends Exception {
+    public InvalidQuantityException(String message) {
+        super(message);
+    }
+}
+
+public class DraftOfFinalChallenge5 {
+    public static void main(String[] args) {
+        while (true) {
+            String[] options = {"Banking System", "Shopping Cart", "Exit"};
+            String choice = (String) JOptionPane.showInputDialog(
+                null,
+                "Choose an application:",
+                "Menu",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]
+            );
+
+            if (choice == null || choice.equals("Exit")) {
+                JOptionPane.showMessageDialog(null, "Exiting application.");
+                break;
+            }
+
+            switch (choice) {
+                case "Banking System":
+                    handleBankingSystem();
+                    break;
+
+                case "Shopping Cart":
+                    handleShoppingCart();
+                    break;
+
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid choice. Try again.");
+            }
+        }
+    }
+
+    // Banking System Logic
+    private static void handleBankingSystem() {
+        double currentBalance = 150000.00;
+
+        try {
+            String input = JOptionPane.showInputDialog("Enter amount to withdraw:");
+            if (input == null) return; // User pressed Cancel
+
+            double amountToWithdraw = Double.parseDouble(input);
+
+            if (amountToWithdraw > currentBalance) {
+                throw new InsufficientFundsException("Insufficient funds. Your balance is $" + currentBalance);
+            }
+
+            currentBalance -= amountToWithdraw;
+            JOptionPane.showMessageDialog(null, "Withdrawal successful! Remaining balance: $" + currentBalance);
+
+        } catch (InsufficientFundsException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // Shopping Cart Logic
+    private static void handleShoppingCart() {
+        int availableStock = 200;
+
+        try {
+            String input = JOptionPane.showInputDialog("Enter quantity to purchase:");
+            if (input == null) return; // User pressed Cancel
+
+            int quantity = Integer.parseInt(input);
+
+            if (quantity < 0) {
+                throw new InvalidQuantityException("Quantity cannot be negative.");
+            } else if (quantity > availableStock) {
+                throw new InvalidQuantityException("Requested quantity exceeds available stock of " + availableStock);
+            }
+
+            availableStock -= quantity;
+            JOptionPane.showMessageDialog(null, "Purchase successful! Remaining stock: " + availableStock);
+
+        } catch (InvalidQuantityException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
