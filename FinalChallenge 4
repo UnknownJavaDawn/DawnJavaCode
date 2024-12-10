@@ -1,0 +1,77 @@
+
+//Dawn Jazhere P. Aguares
+//FINAL CHALLENGE No.4
+
+
+public class BrowserHistory {
+    // Node class to represent each page
+    static class Node {
+        String url;
+        Node prev, next;
+
+        Node(String url) {
+            this.url = url;
+            this.prev = null;
+            this.next = null;
+        }
+    }
+
+    private Node current;
+
+    // Add a new page
+    public void visit(String url) {
+        Node newNode = new Node(url);
+        if (current != null) {
+            current.next = newNode;
+            newNode.prev = current;
+        }
+        current = newNode;
+        System.out.println("Visited: " + url);
+    }
+
+    // Go back to the previous page
+    public void goBack() {
+        if (current == null || current.prev == null) {
+            System.out.println("No previous page to go back to.");
+            return;
+        }
+        current = current.prev;
+        System.out.println("Back to: " + current.url);
+    }
+
+    // Go forward to the next page
+    public void goForward() {
+        if (current == null || current.next == null) {
+            System.out.println("No forward page to navigate to.");
+            return;
+        }
+        current = current.next;
+        System.out.println("Forward to: " + current.url);
+    }
+
+    // Display the current page
+    public void showCurrentPage() {
+        if (current == null) {
+            System.out.println("No page currently visited.");
+        } else {
+            System.out.println("Current page: " + current.url);
+        }
+    }
+
+    // Main method to test functionality
+    public static void main(String[] args) {
+        BrowserHistory history = new BrowserHistory();
+
+        history.visit("google.com");
+        history.visit("stackoverflow.com");
+        history.visit("github.com");
+
+        history.goBack();
+        history.goBack();
+        history.goForward();
+
+        history.visit("reddit.com");
+        history.goBack();
+        history.showCurrentPage();
+    }
+}
