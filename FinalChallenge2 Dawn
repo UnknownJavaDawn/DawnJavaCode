@@ -7,16 +7,13 @@ import java.util.Scanner;
 public class FinalChallenge2 {
 
     public static void main(String[] args) {
-        // Step 1: Declare a 2D array to store the temperatures for 3 cities over 7 days
+
         double[][] temperatures = new double[3][7];  // 3 cities, 7 days
        
-        // Create a Scanner object for input
         Scanner scanner = new Scanner(System.in);
        
-        // Step 2: Collect user input for daily temperatures for 3 cities over 7 days
         System.out.println("Enter daily temperatures for 3 cities over 7 days:");
        
-        // Loop through cities and days to collect temperature data
         for (int i = 0; i < 3; i++) { // Loop for 3 cities
             System.out.println("Enter temperatures for City " + (i + 1) + ":");
             for (int j = 0; j < 7; j++) { // Loop for 7 days
@@ -25,7 +22,6 @@ public class FinalChallenge2 {
             }
         }
 
-        // Step 3: Calculate and display average temperature for each city
         System.out.println("\nAverage Temperatures for each city:");
         for (int i = 0; i < 3; i++) {
             double total = 0.0;
@@ -36,7 +32,6 @@ public class FinalChallenge2 {
             System.out.println("City " + (i + 1) + " - Average Temperature: " + String.format("%.2f", average) + "°C");
         }
 
-        // Step 4: Find and display the highest temperature recorded for each city
         System.out.println("\nHighest Temperatures for each city:");
         for (int i = 0; i < 3; i++) {
             double highest = temperatures[i][0];
