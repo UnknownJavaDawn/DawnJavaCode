@@ -1,0 +1,48 @@
+//Dawn Jazhere P. Aguares
+//November 7,2024
+//Final Challenge No.1
+
+
+import java.util.Scanner;
+
+public class FinalChallenge1 {
+
+    public static void main(String[] args) {
+        // Step 1: Declare arrays for stock levels and prices
+        int[] stockLevels = new int[10];  // Array to store stock levels for 10 products
+        double[] prices = new double[10];  // Array to store prices for 10 products
+
+        // Create a Scanner object to read user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Step 2: Collect user input for stock levels and prices
+        System.out.println("Enter stock levels and prices for 10 products:");
+
+        for (int i = 0; i < 10; i++) {
+            // Get stock level for product i+1
+            System.out.print("Enter stock level for product " + (i + 1) + ": ");
+            stockLevels[i] = scanner.nextInt();
+
+            // Get price for product i+1
+            System.out.print("Enter price for product " + (i + 1) + ": ");
+            prices[i] = scanner.nextDouble();
+        }
+
+        // Step 3: Calculate the total value of stock
+        double totalValue = 0.0;
+
+        for (int i = 0; i < 10; i++) {
+            totalValue += stockLevels[i] * prices[i];
+        }
+
+        // Step 4: Display the total value of the stock
+        System.out.println("\nTotal stock value of all products: $" + String.format("%.2f", totalValue));
+
+        // Optionally, display the individual product values for verification
+        for (int i = 0; i < 10; i++) {
+            double productValue = stockLevels[i] * prices[i];
+            System.out.println("Product " + (i + 1) + " - Stock: " + stockLevels[i] + ", Price: $" + String.format("%.2f", prices[i]) + ", Total Value: $" + String.format("%.2f", productValue));
+        }
+
+    }
+}
