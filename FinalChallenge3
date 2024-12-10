@@ -7,23 +7,19 @@ import java.util.Scanner;
 public class FinalChallenge3 {
 
     public static void main(String[] args) {
-        // Step 1: Declare a one-dimensional array to store student names
+        
         String[] studentNames = new String[5];  // Array to store names of 5 students
        
-        // Step 2: Declare a two-dimensional array to store grades for 5 students and 3 subjects
         double[][] grades = new double[5][3];  // 5 students, 3 subjects
-       
-        // Create a Scanner object for input
+
         Scanner scanner = new Scanner(System.in);
 
-        // Step 3: Collect student names
         System.out.println("Enter names of 5 students:");
         for (int i = 0; i < 5; i++) {
             System.out.print("Enter name for student " + (i + 1) + ": ");
             studentNames[i] = scanner.nextLine();
         }
        
-        // Step 4: Collect grades for each student in 3 subjects
         System.out.println("\nEnter grades for each student (3 subjects per student):");
         for (int i = 0; i < 5; i++) {
             System.out.println("Enter grades for " + studentNames[i] + ":");
